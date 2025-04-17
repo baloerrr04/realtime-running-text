@@ -62,7 +62,7 @@ export function useRunningTextData() {
             const dataRef = ref(database, "data");
             await set(dataRef, { text: newData.trim() });
             setNewData("");
-            setStatus("Data updated successfully!");
+            // setStatus("Teks berhasil diperbarui!");
             setUpdateSuccess(true);
             setTimeout(() => {
                 setStatus("");
