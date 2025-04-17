@@ -68,7 +68,7 @@ export default function App() {
             style={styles.headerGradient}
           >
             <Text style={styles.headerText}>Running Text Editor</Text>
-            <FontAwesome5 name="graduation-cap" size={20} color="white" />
+            <FontAwesome5 name="scroll" size={20} color="white" />
           </LinearGradient>
 
           <View style={styles.dataSection}>
