@@ -64,22 +64,21 @@ export default function App() {
           </View>
 
           <LinearGradient
-            colors={["#113B7A", "#3066BE"]}
+            colors={["#113B7A", "#3066BE"]} // biru muda tema pendidikan
             style={styles.headerGradient}
           >
-            <Text style={styles.headerText}>Running Text Editor</Text>
+            <Text style={styles.headerText}>Editor Teks Berjalan</Text>
             <FontAwesome5 name="scroll" size={20} color="white" />
           </LinearGradient>
 
           <View style={styles.dataSection}>
             <Text style={styles.sectionTitle}>
-              <MaterialIcons name="article" size={18} color="#113B7A" /> Current
-              Text
+              <MaterialIcons name="article" size={18} color="#113B7A" /> Teks Saat Ini
             </Text>
 
             <View style={styles.currentDataContainer}>
               {isLoading ? (
-                <ActivityIndicator size="small" color="#3066BE" />
+                <ActivityIndicator size="small" color="#2F80ED" />
               ) : (
                 <Text style={styles.currentDataText}>{currentData}</Text>
               )}
@@ -88,13 +87,12 @@ export default function App() {
 
           <View style={styles.inputSection}>
             <Text style={styles.sectionTitle}>
-              <MaterialIcons name="edit" size={18} color="#113B7A" /> Update
-              Text
+              <MaterialIcons name="edit" size={18} color="#113B7A" /> Perbarui Teks
             </Text>
 
             <TextInput
               style={styles.input}
-              placeholder="Enter new teaching material..."
+              placeholder="Masukkan materi baru..."
               placeholderTextColor="#A0A0A0"
               value={newData}
               onChangeText={setNewData}
@@ -110,7 +108,7 @@ export default function App() {
                 colors={
                   updateSuccess
                     ? ["#4CAF50", "#2E7D32"]
-                    : ["#113B7A", "#3066BE"]
+                    : ["#113B7A", "#2F80ED"]
                 }
                 style={styles.buttonGradient}
               >
@@ -119,7 +117,7 @@ export default function App() {
                 ) : (
                   <>
                     <Text style={styles.buttonText}>
-                      {updateSuccess ? "Updated!" : "Update Text"}
+                      {updateSuccess ? "Berhasil Diperbarui!" : "Perbarui Teks"}
                     </Text>
                     <MaterialIcons
                       name={updateSuccess ? "check-circle" : "cloud-upload"}
