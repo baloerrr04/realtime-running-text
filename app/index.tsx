@@ -1,5 +1,3 @@
-// app/index.js
-import { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -12,10 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { ref, onValue, set } from "firebase/database";
-import { database } from "@/lib/firebase";
 import { LinearGradient } from "expo-linear-gradient";
-import { useFonts } from "expo-font";
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 import { styles } from "../style";
 import { useRunningTextData } from "@/hooks/useRunningTextData";
@@ -31,9 +26,9 @@ export default function App() {
     scaleAnim,
     newData,
     setNewData,
-    updateSuccess
+    updateSuccess,
   } = useRunningTextData();
-  
+
   const { fontsLoaded } = useFontData();
 
   if (!fontsLoaded) {
@@ -72,14 +67,14 @@ export default function App() {
             colors={["#113B7A", "#3066BE"]}
             style={styles.headerGradient}
           >
-            <Text style={styles.headerText}>Education Data Editor</Text>
+            <Text style={styles.headerText}>Running Text Editor</Text>
             <FontAwesome5 name="graduation-cap" size={20} color="white" />
           </LinearGradient>
 
           <View style={styles.dataSection}>
             <Text style={styles.sectionTitle}>
               <MaterialIcons name="article" size={18} color="#113B7A" /> Current
-              Lesson Material
+              Text
             </Text>
 
             <View style={styles.currentDataContainer}>
@@ -94,7 +89,7 @@ export default function App() {
           <View style={styles.inputSection}>
             <Text style={styles.sectionTitle}>
               <MaterialIcons name="edit" size={18} color="#113B7A" /> Update
-              Lesson Material
+              Text
             </Text>
 
             <TextInput
@@ -124,7 +119,7 @@ export default function App() {
                 ) : (
                   <>
                     <Text style={styles.buttonText}>
-                      {updateSuccess ? "Updated!" : "Update Material"}
+                      {updateSuccess ? "Updated!" : "Update Text"}
                     </Text>
                     <MaterialIcons
                       name={updateSuccess ? "check-circle" : "cloud-upload"}
