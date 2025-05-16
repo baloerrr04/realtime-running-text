@@ -12,7 +12,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
-import { styles } from "../style";
+import { styles } from "../../style";
 import { useRunningTextData } from "@/hooks/useRunningTextData";
 import { useFontData } from "@/hooks/useFontData";
 
