@@ -3,7 +3,7 @@ import { onValue, ref, set, update } from "firebase/database";
 import { useEffect, useState } from "react"
 import { Animated } from "react-native";
 
-export function useRunningTextData() {
+export function useMinuteTextData() {
     const [currentData, setCurrentData] = useState("Loading...");
     const [status, setStatus] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,7 @@ export function useRunningTextData() {
             (snapshot) => {
                 const data = snapshot.val();
                 setCurrentData(
-                    data ? data.text || "No data available" : "No data available"
+                    data ? data.minutes : "No data available"
                 );
                 setIsLoading(false);
             },
@@ -50,20 +50,25 @@ export function useRunningTextData() {
         return () => unsubscribe();
     }, [])
 
+
     const handleUpdate = async () => {
-       if (!newData.trim()) {
+        setIsLoading(true);
+
+        if (!newData.trim()) {
             setStatus("Input tidak boleh kosong");
             setIsLoading(false);
             setTimeout(() => setStatus(""), 2000);
             return;
         }
 
-        setIsLoading(true);
         try {
             const dataRef = ref(database, "data");
-            await update(dataRef, { text: newData.trim() });
+
+            await update(dataRef, {
+                minutes: newData.trim() ? parseFloat(newData) : parseFloat(currentData),
+            });
+
             setNewData("");
-            // setStatus("Teks berhasil diperbarui!");
             setUpdateSuccess(true);
             setTimeout(() => {
                 setStatus("");
@@ -74,8 +79,12 @@ export function useRunningTextData() {
             setStatus(`Error: ${error.message}`);
             setTimeout(() => setStatus(""), 3000);
         }
+
         setIsLoading(false);
     };
+
+
+
 
     return {
         handleUpdate,

@@ -15,9 +15,18 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Running Text',
+            title: 'Teks Berjalan',
             tabBarIcon: ({ color }) => (
               <MaterialIcons name="text-fields" size={24} color={color} />
+            )
+          }}
+        />
+        <Tabs.Screen
+          name="minute"
+          options={{
+            title: 'Teks Menit',
+            tabBarIcon: ({ color }) => (
+              <MaterialIcons name="av-timer" size={24} color={color} />
             ),
           }}
         />
